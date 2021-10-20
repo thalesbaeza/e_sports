@@ -1,7 +1,5 @@
 import requests
-import sys 
-sys.path.insert(0, 'C:\www\dota2\models')
-from conexao import Conexao
+from ..models.conexao import Conexao
 
 db = Conexao()
 
