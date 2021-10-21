@@ -1,6 +1,6 @@
 import requests
 
-from models.conexao import Conexao
+from config.conexao import Conexao
 
 db = Conexao()
 
