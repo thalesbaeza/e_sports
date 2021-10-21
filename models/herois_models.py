@@ -1,4 +1,4 @@
-from database.tabelas import *
+from database.tabelas import criar_herois, inserir_herois
 
 def api_herois(dicionario):
     lista = []
