@@ -1,4 +1,4 @@
-from database.tabelas import criar_herois, inserir_herois
+from database import tabelas
 
 def api_herois(dicionario):
     lista = []
@@ -22,13 +22,5 @@ def api_herois(dicionario):
     data.append(foto3)
             
     #Criação da tabela dos herois
-    criar_herois()
-    inserir_herois(data)
-
-    #Criação da tabela das Habilidades
-    #inserir_habilidades()
-    #inserir_habilidades(data)
-
-    #Criação da tabela Árvore de Talentos
-    #criar_talentos()
-    #inserir_talentos(data)
+    tabelas.criar_herois()
+    tabelas.inserir_herois(data)

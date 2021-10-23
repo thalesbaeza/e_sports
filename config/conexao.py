@@ -16,3 +16,5 @@ class Conexao():
     def sair(self):
         self.cur.close()
         self.conn.close()
+
+   
