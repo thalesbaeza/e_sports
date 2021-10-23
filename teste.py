@@ -1,6 +1,81 @@
 import requests
 
 from config.conexao import Conexao
+from database import tabelas
+
+db = Conexao()
+
+
+url = requests.get('https://api.opendota.com/api/heroes', timeout=10)
+dicionario = url.json()
+nur_req = 0
+    
+
+try: 
+    if len(dicionario[nur_req]) > 0:
+        lista = []
+        data = []
+        data2 = []
+        remover = ['roles']
+        
+        for x in list(dicionario[nur_req]):
+            if x not in remover:
+                lista.append(x)
+                
+        for z in lista:
+            data.append(dicionario[nur_req][z])
+
+        tabelas.criar_herois_descricao()
+        tabelas.inserir_herois_descricao(data)
+
+        print(data)
+
+        try:
+            for y in range(0,7):
+                if len(dicionario[0]['roles']) > 0:
+                    data2.append(dicionario[nur_req]['id'])
+                    data2.append(dicionario[nur_req]['roles'][y])
+
+                    print(data2)
+                    
+
+                    tabelas.criar_herois_estilo()
+                    tabelas.inserir_herois_estilo(data2)
+
+                    data2.clear()
+                
+        except:
+            pass
+
+except:
+    pass
+
+
+
+
+
+
+#   for y in lista:
+#        data.append(dicionario['result']['data']['heroes'][0][y])      
+
+#try:
+#    for x in range(0,20):
+#        if dicionario['result']['data']['heroes'][0]['abilities'][x]['id'] > 0:
+#            print(dicionario['result']['data']['heroes'][0]['abilities'][x])
+#        else:
+#            print('Requisição sem retorno')
+#except IndexError:
+#    pass
+
+
+
+#['id', 'name', 'localized_name', 'primary_attr', 'attack_type', 'roles', 'legs'] CREATE TABLE position_style
+
+#['roles'] CREATE TABLE roles
+   
+import requests
+
+from config.conexao import Conexao
 
 db = Conexao()
 
